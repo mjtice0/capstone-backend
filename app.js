@@ -14,8 +14,6 @@ app.use(cors());
 app.use(express.json());
 dotenv.config();
 
-//google client id
-// 378108455634-lrlubhjt406ecuvvca90o1rsg0blbg7g.apps.googleusercontent.com
 mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URL, { useNewUrlParser: true })
