@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
-//will need to update for form input in react
 const ReviewSchema = new mongoose.Schema(
   {
     placeId: {
       type: String,
-      required: true
+      required: true,
     },
     name: {
       type: String,
@@ -25,16 +24,8 @@ const ReviewSchema = new mongoose.Schema(
       require: true,
       min: 0,
       max: 5,
-    },
-    // lat: {
-    //   type: Number,
-    //   require: true,
-    // },
-    // long: {
-    //   type: Number,
-    //   require: true,
-    // },
   },
+},
   { timestamps: true }
 );
 
