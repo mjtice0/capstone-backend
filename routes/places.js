@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { default: axios } = require("axios");
 const express = require("express");
 const request = require("express");
-
+//did not end up completing but wanted to use proxy to communicate with google maps
 router.get("", async (req, res, next) => {
   try {
     const apiKey = prcocess.env(GOOGLE_URL)

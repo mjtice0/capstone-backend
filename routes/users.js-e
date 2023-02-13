@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const User = require("../models/User");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
-//create a pin, the title, descrption,etc. will be in request body
+//create a pin, the title, descrption will be in request body
 router.post("/register", async (req, res) => {
   try {
     //generate a new password
@@ -25,7 +25,6 @@ router.post("/register", async (req, res) => {
 });
 
 //login for users
-
 router.post("/login", async (req, res) => {
   try {
     //find user
