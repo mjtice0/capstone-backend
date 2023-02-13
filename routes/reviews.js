@@ -4,7 +4,7 @@ const Review = require("../models/Review");
 //create a review, the title, descrption,etc. will be in request body
 router.post("/:placeId", async (req, res) => {
   const { placeId } = req.params;
-  const { name, title, description, rating } = req.body;
+  const { name, title, description, rating, features } = req.body;
 
   const newReview = {
     placeId,
@@ -12,6 +12,7 @@ router.post("/:placeId", async (req, res) => {
     title,
     description,
     rating,
+    features,
   };
 
   try {
