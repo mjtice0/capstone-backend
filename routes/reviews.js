@@ -14,7 +14,7 @@ router.post("/:placeId", async (req,res)=>{
 //get all reviews from DB
 router.get("/:placeId", async (req,res)=>{
   try {
-    const review = await Review.find();
+    const review = await Review.find({ placeId: req.params.placeId });
     res.status(200).json(review)
   } catch(err){
     res.status(500).json(err)
