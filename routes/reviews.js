@@ -5,20 +5,27 @@ const Review = require("../models/Review");
 router.post("/:placeId", async (req, res) => {
   const { placeId } = req.params;
   const { name, title, description, rating, features } = req.body;
-
-  const newReview = {
+  console.log("will save", {
     placeId,
     name,
     title,
     description,
     rating,
-    features,
-  };
-
+    // features,
+  });
+  const review = new Review({
+    placeId,
+    name,
+    title,
+    description,
+    rating,
+    // features,
+  });
   try {
-    const savedReview = await newReview.save();
-    res.status(200);
+    const savedReview = await review.save();
+    res.status(200).json(savedReview);
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 });
@@ -42,6 +49,7 @@ router.delete("/:placeId", async (req, res) => {
         message: "Review not found",
       });
     }
+
     res.statues(200).json({
       success: true,
       message: "The review was deleted",
@@ -51,9 +59,8 @@ router.delete("/:placeId", async (req, res) => {
       success: false,
       message: "Failed to delete the review",
       error: err,
-    })
+    });
   }
 });
-
 
 module.exports = router;

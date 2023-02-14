@@ -25,10 +25,11 @@ const ReviewSchema = new mongoose.Schema(
       min: 0,
       max: 5,
     },
-    features: {
-      type: String,
-      require: true,
-    }
+    // features: 
+    // {
+    //   type: String,
+    //   require: false,
+    // },
   },
   { timestamps: true }
 );
