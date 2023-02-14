@@ -11,7 +11,7 @@ router.post("/:placeId", async (req, res) => {
     title,
     description,
     rating,
-    // features,
+    features,
   });
   const review = new Review({
     placeId,
@@ -19,7 +19,7 @@ router.post("/:placeId", async (req, res) => {
     title,
     description,
     rating,
-    // features,
+    features,
   });
   try {
     const savedReview = await review.save();
