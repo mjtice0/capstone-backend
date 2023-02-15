@@ -27,7 +27,7 @@ mongoose
 
 app.use("/api/users", userRoute);
 app.use("/api/reviews", reviewRoute);
-app.use("/api/places", placeRoute);
+// app.use("/api/places", placeRoute);
 //listen for server connection
 app.listen(process.env.PORT || 5000, () => {
   console.log("backend server is connected");
