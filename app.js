@@ -23,12 +23,12 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-
-
+var port = process.env.PORT || 3000;
 app.use("/api/users", userRoute);
 app.use("/api/reviews", reviewRoute);
-// app.use("/api/places", placeRoute);
+app.use("/api/places", placeRoute);
 //listen for server connection
-app.listen(process.env.PORT || 5000, () => {
+app.listen(post, "0.0.0.0", () => {
   console.log("backend server is connected");
 });
+
