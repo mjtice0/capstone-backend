@@ -13,22 +13,19 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 dotenv.config();
-// const uri = process.env.MONGODB_URI;
 
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
   .then(() => {
     console.log("mongo db connected");
   })
   .catch((err) => console.log(err));
 
-var port = process.env.PORT || 3000;
 app.use("/api/users", userRoute);
 app.use("/api/reviews", reviewRoute);
 app.use("/api/places", placeRoute);
 //listen for server connection
-app.listen(post, "0.0.0.0", () => {
+app.listen(8800, () => {
   console.log("backend server is connected");
 });
-
