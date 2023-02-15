@@ -13,10 +13,11 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 dotenv.config();
+// const uri = process.env.MONGODB_URI;
 
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONGO_URL, { useNewUrlParser: true })
+  .connect(process.env.MONG0DB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log("mongo db connected");
   })
