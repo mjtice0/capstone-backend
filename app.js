@@ -17,7 +17,7 @@ dotenv.config();
 
 mongoose.set("strictQuery", false);
 mongoose
-  .connect(process.env.MONG0DB_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     console.log("mongo db connected");
   })
