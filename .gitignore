@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -130,3 +131,8 @@ dist
 .pnp.*
 
 .env
+=======
+
+node_modules
+.env
+>>>>>>> origin/master
