@@ -38,29 +38,7 @@ router.get("/:placeId", async (req, res) => {
     res.status(500).json(err);
   }
 });
-// findByIdAndDelete(req.params.id);
-//delete a review associated with a place Id from DB
-router.delete("/:placeId", async (req, res) => {
-  try {
-    const review = await Review.find({ placeId: req.params.placeId });
-    if (!review) {
-      return res.status(404).json({
-        success: false,
-        message: "Review not found",
-      });
-    }
 
-    res.statues(200).json({
-      success: true,
-      message: "The review was deleted",
-    });
-  } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Failed to delete the review",
-      error: err,
-    });
-  }
-});
+//delete a review associated with a place Id from DB
 
 module.exports = router;

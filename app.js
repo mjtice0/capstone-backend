@@ -1,8 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-//config dotenv file
 const dotenv = require("dotenv");
-//create express app by calling express function
 const app = express();
 const { google } = require("googleapis");
 const reviewRoute = require("./routes/reviews");
