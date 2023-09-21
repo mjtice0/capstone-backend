@@ -1,12 +1,30 @@
 const router = require("express").Router();
 const Review = require("../models/Review");
+const jwt = require("jsonwebtoken");
 
-//create a new review in DB
-router.post("/:placeId", async (req, res) => {
+const verifyToken = (req, res, next) => {
+  const token = req.header("auth-token");
+  if (!token) {
+    return res.status(401).json({ error: "Access denied. Please log in." });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Attach user information to the request
+    next();
+  } catch (err) {
+    res.status(400).json({ error: "Invalid token." });
+  }
+};
+
+router.post("/:placeId", verifyToken, async (req, res) => {
   const { placeId } = req.params;
   const { name, title, description, rating, features } = req.body;
+  const { userId } = req.user;
+
   console.log("will save", {
     placeId,
+    userId,
     name,
     title,
     description,
@@ -15,12 +33,14 @@ router.post("/:placeId", async (req, res) => {
   });
   const review = new Review({
     placeId,
+    userId,
     name,
     title,
     description,
     rating,
     features,
   });
+  
   try {
     const savedReview = await review.save();
     res.status(200).json(savedReview);
@@ -38,7 +58,5 @@ router.get("/:placeId", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-//delete a review associated with a place Id from DB
 
 module.exports = router;
