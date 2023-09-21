@@ -7,6 +7,15 @@ const reviewRoute = require("./routes/reviews");
 const userRoute = require("./routes/users");
 const placeRoute = require("./routes/places");
 const cors = require("cors");
+const crypto = require("crypto");
+
+const secretKey = crypto.randomBytes(32).toString("hex");
+console.log("Secret Key:", secretKey);
+
+const jwtConfig = {
+  secret: secretKey, // Use the generated secret key
+  expiresIn: "1h", // Set an expiration time for tokens
+};
 
 app.use(cors());
 app.use(express.json());
