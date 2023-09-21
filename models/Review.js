@@ -5,6 +5,12 @@ const ReviewSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userId: {
+      // Add a reference to the User model
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // This should match the model name for the User
+      required: true,
+    },
     name: {
       type: String,
       require: true,
