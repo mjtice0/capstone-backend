@@ -6,9 +6,8 @@ const ReviewSchema = new mongoose.Schema(
       required: true,
     },
     userId: {
-      // Add a reference to the User model
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // This should match the model name for the User
+      ref: "User", 
       required: true,
     },
     name: {
