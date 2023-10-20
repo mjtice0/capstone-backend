@@ -7,33 +7,35 @@ const ReviewSchema = new mongoose.Schema(
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", 
+      ref: "User",
       required: true,
     },
     name: {
       type: String,
-      require: true,
+      required: true,
     },
     title: {
       type: String,
-      require: true,
+      required: true,
       min: 3,
     },
     description: {
       type: String,
-      require: true,
+      required: true,
       min: 3,
     },
     rating: {
       type: Number,
-      require: true,
+      required: true,
       min: 0,
       max: 5,
     },
-    features: {
-      type: String,
-      require: true,
-    },
+    features: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
   },
   { timestamps: true }
 );

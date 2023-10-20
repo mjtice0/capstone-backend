@@ -10,7 +10,9 @@ const verifyToken = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Attach user information to the request
+    console.log("Decoded Token Payload:", decoded);
+    req.user = decoded;
+    console.log("Token Verified:", decoded);
     next();
   } catch (err) {
     res.status(400).json({ error: "Invalid token." });
@@ -40,7 +42,7 @@ router.post("/:placeId", verifyToken, async (req, res) => {
     rating,
     features,
   });
-  
+
   try {
     const savedReview = await review.save();
     res.status(200).json(savedReview);

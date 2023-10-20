@@ -9,13 +9,20 @@ const placeRoute = require("./routes/places");
 const cors = require("cors");
 const crypto = require("crypto");
 
-const secretKey = crypto.randomBytes(32).toString("hex");
-console.log("Secret Key:", secretKey);
+// const secretKey = crypto.randomBytes(32).toString("hex");
+// console.log("Secret Key:", secretKey);
 
-const jwtConfig = {
-  secret: secretKey,
-  expiresIn: "1h",
-};
+// const jwtConfig = {
+//   secret: secretKey,
+//   expiresIn: "3h",
+// };
+dotenv.config();
+
+const jwtSecret = process.env.JWT_SECRET;
+if (!jwtSecret) {
+  console.error("JWT secret key is not defined in environment variables.");
+  process.exit(1); // Exit the application if JWT secret key is not defined
+}
 
 app.use(cors());
 app.use(express.json());
